@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="Juan Jose Rincon" />
     <meta name="generator" content="Hugo 0.122.0" />
-    <title>Ispeccion Vehiculos · Inversiones Bellavista V1.0</title>
+    <title>Inspeccion Vehiculos · Inversiones Bellavista V1.0</title>
 
     <link
       rel="canonical"
@@ -56,6 +56,10 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
     <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <meta name="theme-color" content="#712cf9" />
 
     <style>
@@ -203,16 +207,14 @@
         <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
       </button>
       <h1>
-        <button
+        <a
+          href="./index.html"
           class="btn mt-3 py-2 d-flex align-items-center"
           id="bd-theme"
           type="button"
         >
-          <i
-            style="text-align: center; font-size: 100%"
-            class="bi bi-eye-fill"
-          ></i>
-        </button>
+          <i class="bi bi-arrow-return-left"></i>
+        </a>
       </h1>
       <ul
         class="dropdown-menu dropdown-menu-end shadow"
@@ -278,7 +280,9 @@
             width="250"
             height="250"
           />
-          <h1 style="font-weight: bold">REGISTRO DE INSPECCION DE VEHICULOS</h1>
+          <h1 style="font-weight: bold">
+            REGISTROS DE INSPECCION DE VEHICULOS
+          </h1>
           <p>Responsable SST:</p>
         </div>
 
@@ -286,95 +290,8 @@
           <div class="col-md-12 col-lg-12">
             <form class="needs-validation">
               <div class="row">
-                <h4 class="mb-1">1. Fecha Actual</h4>
-                <div class="col-12">
-                  <label for="fecha" class="form-label">Fecha</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="fecha"
-                    name="fecha"
-                    value="2024-04-25"
-                    disabled
-                    required
-                  />
-                </div>
+                <h4 class="mb-1">Registros</h4>
                 <hr class="my-4 mt-5" />
-                <h4 class="mb-1">2. Datos del Conductor</h4>
-                <div class="col-sm-6">
-                  <label for="nombres" class="form-label">Nombres: </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="nombres"
-                    name="nombres"
-                    placeholder=""
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Ingresa un nombre válido para continuar.
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <label for="apellidos" class="form-label">Apellidos: </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="apellidos"
-                    name="apellidos"
-                    placeholder=""
-                    value=""
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Ingresa un apellido valido para continuar.
-                  </div>
-                </div>
-                <hr class="my-4 mt-5" />
-                <h4 class="mb-1">3. Datos del Vehiculo</h4>
-                <div class="col-md-4">
-                  <label for="modelo" class="form-label">Modelo</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="modelo"
-                    name="modelo"
-                    placeholder=""
-                    required
-                  />
-                  <div class="invalid-feedback">Ingrese un Modelo Válido.</div>
-                </div>
-                <div class="col-md-4">
-                  <label for="placa" class="form-label">Placa</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="placa"
-                    name="placa"
-                    placeholder=""
-                    required
-                  />
-                  <div class="invalid-feedback">Ingrese una Placa Válida.</div>
-                </div>
-                <div class="col-md-4">
-                  <label for="kilometraje" class="form-label"
-                    >Kilometraje</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="kilometraje"
-                    name="kilometraje"
-                    placeholder=""
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Ingrese un Kilometraje Válido.
-                  </div>
-                </div>
-                <hr class="my-4 mt-5" />
-                <h4 class="mb-1">4. Lista de Chequeo</h4>
-                <p>Marca de acuerdo a lo que corresponda:</p>
                 <div class="col-md-12">
                   <table class="table text-center table table-bordered">
                     <thead>
@@ -391,29 +308,40 @@
                         <td>1</td>
                         <td>26-04-24</td>
                         <td>AAAAAAAAA</td>
-                        <td></td>
-                        <td></td>
-                        
+                        <td>SAE34</td>
+                        <td>
+                          <button
+                            style="
+                              background-color: #a54f03;
+                              border-color: #a54f03;
+                            "
+                            type="button"
+                            class="btn btn-primary"
+                          >
+                            <i class="bi bi-eye-fill"></i>
+                          </button>
+                        </td>
                       </tr>
                       <tr>
                         <td>2</td>
                         <td>27-04-24</td>
                         <td>AAAAAAAAA</td>
-                        <td></td>
-                        <td></td>
-                        
+                        <td>SAE324</td>
+                        <td>
+                          <button
+                            style="
+                              background-color: #a54f03;
+                              border-color: #a54f03;
+                            "
+                            type="button"
+                            class="btn btn-primary"
+                          >
+                            <i class="bi bi-eye-fill"></i>
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
-                  <h1 style="text-align: center">
-                    <button
-                      id="titulobtn"
-                      class="btn btn-primary"
-                      type="submit"
-                    >
-                      Guardar
-                    </button>
-                  </h1>
                 </div>
               </div>
             </form>

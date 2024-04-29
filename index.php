@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
   <head>
@@ -8,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="Juan Jose Rincon" />
     <meta name="generator" content="Hugo 0.122.0" />
-    <title>Ispeccion Vehiculos · Inversiones Bellavista V1.0</title>
+    <title>Inspeccion Vehiculos · Inversiones Bellavista V1.0</title>
 
     <link
       rel="canonical"
@@ -56,6 +57,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
     <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta name="theme-color" content="#712cf9" />
 
     <style>
@@ -162,6 +164,49 @@
     <link href="checkout.css" rel="stylesheet" />
   </head>
   <body class="bg-body-tertiary">
+  <?php
+                if (isset($_SESSION['mensajeBien'])) {
+                ?>
+                    <script>
+                       Swal.fire({
+                          title:"Proceso Completo",
+                          text: "Información Guardada Correctamente!",
+                           icon: "success"
+                          });
+                    </script>
+                <?php
+                }
+                unset($_SESSION['mensajeBien']);
+                ?>
+
+                <?php
+                if (isset($_SESSION['mensajeMal'])) {
+                ?>
+                    <script>
+                       Swal.fire({
+                          title:"Error Interno",
+                          text: "Ha ocurrido un error al insertar\nContacte a soporte o intente nuevamente!",
+                           icon: "success"
+                          });
+                    </script>
+                <?php
+                }
+                unset($_SESSION['mensajeMal']);
+                ?>
+                <?php
+                if (isset($_SESSION['mensajeVacio'])) {
+                ?>
+                    <script>
+                       Swal.fire({
+                          title:"Error de llenado",
+                          text: "Ha ocurrido un error al insertar\nVerifique de no dejar espacios vacios al llenar la informacion!",
+                           icon: "success"
+                          });
+                    </script>
+                <?php
+                }
+                unset($_SESSION['mensajeVacio']);
+                ?>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path
@@ -285,7 +330,11 @@
 
         <div class="row">
           <div class="col-md-12 col-lg-12">
-            <form class="needs-validation">
+            <form
+              class="needs-validation"
+              action="./controller/agregar.php"
+              method="post"
+            >
               <div class="row">
                 <h4 class="mb-1">1. Fecha Actual</h4>
                 <div class="col-12">
@@ -295,8 +344,13 @@
                     class="form-control"
                     id="fecha"
                     name="fecha"
-                    value="2024-04-25"
-                    disabled
+                    readonly
+                    value= <?php
+                    $fecha_actual_bogota = new DateTime('now', new DateTimeZone('America/Bogota'));
+                    $formato = 'Y-m-d'; // AAAA-MM-DD
+                    $fecha_actual_bogota_formateada = $fecha_actual_bogota->format($formato); 
+                     echo $fecha_actual_bogota_formateada ?>
+                    
                     required
                   />
                 </div>
@@ -395,6 +449,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="llantas"
@@ -407,6 +462,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="llantas"
@@ -419,10 +475,11 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="llantas"
-                              value="N / A"
+                              value="N/A"
                             />
                           </div>
                         </td>
@@ -441,6 +498,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="frenos"
@@ -453,6 +511,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="frenos"
@@ -465,10 +524,11 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="frenos"
-                              value="N / A"
+                              value="N/A"
                             />
                           </div>
                         </td>
@@ -487,6 +547,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="luces"
@@ -499,6 +560,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="luces"
@@ -511,10 +573,11 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="luces"
-                              value="N / A"
+                              value="N/A"
                             />
                           </div>
                         </td>
@@ -536,6 +599,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="niveles"
@@ -548,6 +612,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="niveles"
@@ -560,10 +625,11 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="niveles"
-                              value="N / A"
+                              value="N/A"
                             />
                           </div>
                         </td>
@@ -582,6 +648,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="bateria"
@@ -594,6 +661,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="bateria"
@@ -606,10 +674,11 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="bateria"
-                              value="N / A"
+                              value="N/A"
                             />
                           </div>
                         </td>
@@ -628,6 +697,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="cinturones"
@@ -640,6 +710,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="cinturones"
@@ -652,10 +723,11 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="cinturones"
-                              value="N / A"
+                              value="N/A"
                             />
                           </div>
                         </td>
@@ -674,6 +746,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="espejos"
@@ -686,6 +759,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="espejos"
@@ -698,10 +772,11 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="espejos"
-                              value="N / A"
+                              value="N/A"
                             />
                           </div>
                         </td>
@@ -720,6 +795,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="pito"
@@ -732,6 +808,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="pito"
@@ -744,10 +821,11 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="pito"
-                              value="N / A"
+                              value="N/A"
                             />
                           </div>
                         </td>
@@ -769,6 +847,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="kit"
@@ -781,6 +860,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="kit"
@@ -793,10 +873,11 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="kit"
-                              value="N / A"
+                              value="N/A"
                             />
                           </div>
                         </td>
@@ -809,12 +890,13 @@
                         </td>
                       </tr>
                       <tr>
-                        <td id="titulo">Nivel</td>
+                        <td id="titulo">Nivel de Combustible</td>
                         <td>
                           <div
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="combustible"
@@ -827,6 +909,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="combustible"
@@ -839,10 +922,11 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="combustible"
-                              value="N / A"
+                              value="N/A"
                             />
                           </div>
                         </td>
@@ -861,6 +945,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="documentos"
@@ -873,6 +958,7 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="documentos"
@@ -885,10 +971,11 @@
                             class="form-check d-flex justify-content-center align-items-center"
                           >
                             <input
+                              required
                               class="form-check-input"
                               type="radio"
                               name="documentos"
-                              value="N / A"
+                              value="N/A"
                             />
                           </div>
                         </td>
