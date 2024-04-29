@@ -80,7 +80,7 @@ isset($_POST['documentos']) && !empty($_POST['documentos'])
         $stmt->bindParam(':cinturones', $cinturones, PDO::PARAM_STR);
         $stmt->bindParam(':obsercinturones', $obsercinturones, PDO::PARAM_STR);
         $stmt->bindParam(':espejos', $espejos, PDO::PARAM_STR);
-        $stmt->bindParam(':obserespejos', $fecha, PDO::PARAM_STR);
+        $stmt->bindParam(':obserespejos', $obserespejos, PDO::PARAM_STR);
         $stmt->bindParam(':pito', $pito, PDO::PARAM_STR);
         $stmt->bindParam(':obserpito', $obserpito, PDO::PARAM_STR);
         $stmt->bindParam(':kit', $kit, PDO::PARAM_STR);
