@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `bd_inspecciones`.`Inspecciones` (
   `espejos` NVARCHAR(256) NULL,
   `obserespejos` NVARCHAR(256) NULL,
   `pito` NVARCHAR(256) NULL,
+  `obserpito`NVARCHAR(256) NULL,
   `kit` NVARCHAR(256) NULL,
   `obserkit` NVARCHAR(256) NULL,
   `combustible` NVARCHAR(256) NULL,
